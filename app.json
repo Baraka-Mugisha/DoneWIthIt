@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "DoneWithIt",
+    "slug": "DoneWithIt",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/done.png",
+    "splash": {
+      "image": "./assets/splashdone.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "android": {
+      "package": "com.baraka.donewithit"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "description": "This is an app for learning purposes",
+    "githubUrl": "https://github.com/Baraka-Mugisha/DoneWIthIt"
+  }
+}
