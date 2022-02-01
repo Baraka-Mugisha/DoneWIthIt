@@ -1,42 +1,25 @@
-import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  Dimensions,
-  Image,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  Button,
-  Alert,
-  Platform,
-  StatusBar,
-} from "react-native";
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View, Image, SafeAreaView, Dimensions, TouchableHighlight, TouchableWithoutFeedback } from 'react-native';
+// import { TouchableHighlight } from 'react-native-web';
 
 export default function App() {
   console.log(Dimensions.get("screen"));
   return (
     <View style={styles.container}>
-      <Text onPress={() => console.log("my test")}>Hello World!</Text>
-      <TouchableOpacity>
+      <Text numberOfLines={2} onPress={() => console.log("Text pressed")}>Hello React Native. Today  I am going to make you really really really really long and make the reader tedious to reader</Text>
+      {/* <StatusBar style="auto" /> */} 
+      <TouchableHighlight>
         <Image
-          blurRadius={10}
-          fadeDuration={2000}
+          blurRadius={5}
+          loadingIndicatorSource={require('./assets/splash.png')}
           source={{
-            uri: "https://picsum.photos/200/300",
-            width: Dimensions.get("window").width,
+            width: 200,
             height: 300,
-          }}
-        />
-      </TouchableOpacity>
-      <Button
-        color="orange"
-        title="Click here"
-        onPress={() =>
-          Alert.prompt("pressed", "title", (text) => console.log(text))
-        }
-      />
+            uri: "https://picsum.photos/200/300"
+          }} />
+      </TouchableHighlight>
+
+
     </View>
   );
 }
@@ -44,9 +27,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#ffe",
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
