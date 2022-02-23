@@ -29,7 +29,11 @@ function MessagesScreen(props) {
             title={item.title}
             subTitle={item.description}
             image={item.image}
-            onPress={()=> console.log("selected", item)}
+            onPress={() => console.log("selected", item)}
+            renderRightActions={() => <View style={{
+              backgroundColor: 'red',
+              with: 70
+            }}></View>}
           />}
         ItemSeparatorComponent={ListItemSeparator}
       />
