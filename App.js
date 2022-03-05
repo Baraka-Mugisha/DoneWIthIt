@@ -1,6 +1,7 @@
 import { Text, TextInput, View } from 'react-native';
 import AppButton from './app/components/AppButton';
 import AppText from './app/components/AppText';
+import AppTextInput from './app/components/AppTextInput';
 import Card from './app/components/Card';
 import Icon from './app/components/Icon';
 import ListItem from './app/components/ListItem';
@@ -16,14 +17,7 @@ export default function App() {
   const [firstName, setFirstName] = useState("")
   return (
     <Screen>
-      <Text></Text>
-      <TextInput
-        placeholder='first name'
-        keyboardType='numeric'
-        onChangeText={(text) => setFirstName(text)}
-        clearButtonMode="always"  // Only works for iOS
-        secureTextEntry={true}  //password input box
-      />
+      <AppTextInput placeholder="username" icon="email" />
     </Screen>
   );
 }
