@@ -1,4 +1,4 @@
-import { Text, TextInput, View } from 'react-native';
+import { Switch, Text, TextInput, View } from 'react-native';
 import AppButton from './app/components/AppButton';
 import AppText from './app/components/AppText';
 import AppTextInput from './app/components/AppTextInput';
@@ -14,10 +14,10 @@ import ViewImageScreen from './app/screens/ViewImageScreen';
 import WelcomeScreen from './app/screens/WelcomeScreen';
 
 export default function App() {
-  const [firstName, setFirstName] = useState("")
+  const [isNew, setIsNew] = useState(false)
   return (
     <Screen>
-      <AppTextInput placeholder="username" icon="email" />
+      <Switch value={isNew} onValueChange={newValue => setIsNew(newValue)} />
     </Screen>
   );
 }
