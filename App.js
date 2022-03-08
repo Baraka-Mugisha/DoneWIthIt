@@ -14,12 +14,16 @@ import MessagesScreen from './app/screens/MessagesScreen';
 import ViewImageScreen from './app/screens/ViewImageScreen';
 import WelcomeScreen from './app/screens/WelcomeScreen';
 
+const categories = [
+  { label: "Furniture", value: 1 },
+  { label: "Clothing", value: 2 },
+  { label: "Cameras", value: 3 }]
 export default function App() {
   const [isNew, setIsNew] = useState(false)
   return (
     <Screen>
-      <AppPicker icon="apps" placeholder="Category"/>
-      <AppTextInput icon="email" placeholder="Email"/>
+      <AppPicker items={categories} icon="apps" placeholder="Category" />
+      <AppTextInput icon="email" placeholder="Email" />
     </Screen>
   );
 }
