@@ -1,5 +1,6 @@
 import { Switch, Text, TextInput, View } from 'react-native';
 import AppButton from './app/components/AppButton';
+import AppPicker from './app/components/AppPicker';
 import AppText from './app/components/AppText';
 import AppTextInput from './app/components/AppTextInput';
 import Card from './app/components/Card';
@@ -17,7 +18,8 @@ export default function App() {
   const [isNew, setIsNew] = useState(false)
   return (
     <Screen>
-      <Switch value={isNew} onValueChange={newValue => setIsNew(newValue)} />
+      <AppPicker icon="apps" placeholder="Category"/>
+      <AppTextInput icon="email" placeholder="Email"/>
     </Screen>
   );
 }
