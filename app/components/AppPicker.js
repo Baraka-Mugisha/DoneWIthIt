@@ -1,24 +1,32 @@
-import React from 'react';
-import { TextInput, View, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { TextInput, View, StyleSheet, Modal, TouchableWithoutFeedback, Button } from 'react-native';
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import defaultStyles from "../config/styles";
 import AppText from './AppText';
 
 function AppPicker({ icon, placeholder, ...otherProps }) {
+  const [modalVisible, setModalVisible] = useState(false)
   return (
-    <View style={styles.container}>
-      {icon && <MaterialCommunityIcons
-        name={icon}
-        size={20}
-        color={defaultStyles.colors.medium}
-        style={styles.icon} />}
-      <AppText>{placeholder}</AppText>
-      <MaterialCommunityIcons
-        name="chevron"
-        size={20}
-        color={defaultStyles.colors.medium}
-        style={styles.icon} />
-    </View>
+    <>
+      <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
+        <View style={styles.container}>
+          {icon && <MaterialCommunityIcons
+            name={icon}
+            size={20}
+            color={defaultStyles.colors.medium}
+            style={styles.icon} />}
+          <AppText>{placeholder}</AppText>
+          <MaterialCommunityIcons
+            name="chevron"
+            size={20}
+            color={defaultStyles.colors.medium}
+            style={styles.icon} />
+        </View>
+      </TouchableWithoutFeedback>
+      <Modal visible={modalVisible} animationType="slide">
+        <Button title='close' onPress={() => setModalVisible(false)} />
+        </Modal>
+    </>
   );
 }
 
