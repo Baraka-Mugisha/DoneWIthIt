@@ -3,7 +3,7 @@ import { Switch, Text, TextInput, View } from "react-native";
 import AppButton from "./app/components/AppButton";
 import AppPicker from "./app/components/AppPicker";
 import AppText from "./app/components/AppText";
-import AppTextInput from "./app/components/AppTextInput";
+import AppTextInput from "./app/components/forms/AppTextInput";
 import Card from "./app/components/Card";
 import Icon from "./app/components/Icon";
 import ListItem from "./app/components/ListItem";
