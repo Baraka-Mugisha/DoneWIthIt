@@ -1,5 +1,4 @@
-{
-  "name": "donewithitss",
+{"name": "donewithit",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -23,6 +22,7 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "babel-preset-expo": "~8.1.0",
     "@babel/core": "^7.12.9"
   },
   "private": true
