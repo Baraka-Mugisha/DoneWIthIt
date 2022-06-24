@@ -1,56 +1,38 @@
 import React, { useEffect } from "react";
-import { FlatList, StyleSheet } from "react-native";
 
-import ActivityIndicator from "../components/ActivityIndicator";
-import Button from "../components/Button";
-import Card from "../components/Card";
-import colors from "../config/colors";
-import listingsApi from "../api/listings";
-import routes from "../navigation/routes";
-import Screen from "../components/Screen";
-import AppText from "../components/Text";
 import useApi from "../hooks/useApi";
+import listingsApi from "../api/listings";
+import ShowListings from "../components/Listings";
+import routes from "../navigation/routes";
 
-function ListingsScreen({ navigation }) {
-  const getListingsApi = useApi(listingsApi.getListings);
+const Listings = ({ route }) => {
+  const allListings = useApi(listingsApi.getListings);
+  const userListings = useApi(listingsApi.getUserListings);
 
   useEffect(() => {
-    getListingsApi.request();
-  }, []);
+    if (route.params?.userListings) {
+      userListings.request();
+    } else {
+      allListings.request();
+    }
+  }, [route.params?.userListings]);
 
-  return (
-    <>
-      <ActivityIndicator visible={getListingsApi.loading} />
-      <Screen style={styles.screen}>
-        {getListingsApi.error && (
-          <>
-            <AppText>Couldn't retrieve the listings.</AppText>
-            <Button title="Retry" onPress={getListingsApi.request} />
-          </>
-        )}
-        <FlatList
-          data={getListingsApi.data}
-          keyExtractor={(listing) => listing.id.toString()}
-          renderItem={({ item }) => (
-            <Card
-              title={item.title}
-              subTitle={"$" + item.price}
-              imageUrl={item.images[0].url}
-              onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
-              thumbnailUrl={item.images[0].thumbnailUrl}
-            />
-          )}
-        />
-      </Screen>
-    </>
+  return route.params?.userListings ? (
+    <ShowListings
+      data={userListings.data}
+      error={userListings.error}
+      itemNavigationRoute={routes.USER_LISTING_DETAILS}
+      loading={userListings.loading}
+      onRefresh={userListings.request}
+    />
+  ) : (
+    <ShowListings
+      data={allListings.data}
+      error={allListings.error}
+      loading={allListings.loading}
+      onRefresh={allListings.request}
+    />
   );
-}
+};
 
-const styles = StyleSheet.create({
-  screen: {
-    padding: 20,
-    backgroundColor: colors.light,
-  },
-});
-
-export default ListingsScreen;
+export default Listings;

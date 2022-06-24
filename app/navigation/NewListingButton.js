@@ -1,35 +1,37 @@
 import React from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet, TouchableHighlight } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import colors from "../config/colors";
 
-function NewListingButton({ onPress }) {
+const TabActionButton = ({ onPress }) => {
   return (
-    <TouchableOpacity onPress={onPress}>
-      <View style={styles.container}>
-        <MaterialCommunityIcons
-          name="plus-circle"
-          color={colors.white}
-          size={40}
-        />
-      </View>
-    </TouchableOpacity>
+    <TouchableHighlight
+      onPress={onPress}
+      style={styles.container}
+      underlayColor={colors.medium}
+    >
+      <MaterialCommunityIcons name="plus-circle" style={styles.icon} />
+    </TouchableHighlight>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     backgroundColor: colors.primary,
     borderColor: colors.white,
+    borderWidth: 6,
     borderRadius: 40,
-    borderWidth: 10,
-    bottom: 20,
+    bottom: 30,
     height: 80,
     justifyContent: "center",
     width: 80,
   },
+  icon: {
+    fontSize: 45,
+    color: colors.white,
+  },
 });
 
-export default NewListingButton;
+export default TabActionButton;
